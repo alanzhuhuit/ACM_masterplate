@@ -1,0 +1,45 @@
+const int MAXN = ;
+const int MAXV = ;
+
+struct baba
+{
+	int x, y, t;
+};
+
+baba e[MAXN*2];
+int n, m, L[MAXN], R[MAXN];
+
+bool cmp(const baba &x, const baba &y)
+{
+	return x.x<y.x;
+}
+
+int add(int num, int x, int y, int t)
+{
+	e[num].x = x; e[num].y = y; e[num].t = t;
+	return 0;
+}
+
+int build()
+{
+	while (scanf("%d", &n) != EOF)
+	{
+		for (int i = 1; i < n; i++)
+		{
+			int x, y, t;
+			scanf("%d%d%d", &x,&y, &t);
+			add(2*i-1, x, y, t);	add(2*i, y, x, t);
+		}
+		m = n*2 - 2;
+		sort(e+1, e+m+1, cmp);
+		for (int i = 1; i <= m; i++) {L[i] = 1; R[i] = 0;}
+		int i = 1, k = 1;
+		while (i <= m)
+		{
+			k = e[i].x; L[k] = i;
+			while (i <= m && e[i].x == k) i++;
+			R[k] = i - 1;
+		}
+	}
+	return 0;
+}

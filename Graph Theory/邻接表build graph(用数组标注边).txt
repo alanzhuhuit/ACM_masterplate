@@ -1,0 +1,52 @@
+struct Edge
+{
+	int v, next, weight;
+};
+
+struct Node
+{
+	int v, weight;
+};
+
+const int MAXN = ;
+
+Edge e[MAXN];
+int EdgeNum, NodeNum, eid, p[MAXN];
+
+int Add_Edge(int from, int to, int weight)
+{
+	e[eid].next = p[from];
+	e[eid].v = to;
+    	e[eid].cost = cost;
+    	p[from] = eid++;
+  	return 0;
+}
+
+int init()
+{
+    	memset(p, -1, sizeof(p));
+    	eid=0;
+    	int from, to, cost;
+    	for (int i = 0; i < n; i++)
+    	{
+       		scanf("%d%d%d", &from, &to, &weight);
+        		Add_Edge(from, to, weight);
+        		//Add_Edge(to, from, weight);//无向图
+    	}
+    	return 0;
+}
+
+int main()
+{
+	while (scanf("%d%d", &NodeNum, &EdgeNum) != EOF)
+    	{
+     	   	init();
+    	}
+    	return 0;
+}
+
+
+/*
+	for (int j = p[t.v]; j != -1; j = e[j].next)
+	访问t点出发的所有边
+*/
