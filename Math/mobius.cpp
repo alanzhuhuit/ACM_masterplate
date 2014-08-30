@@ -32,8 +32,8 @@ void mobius()//g(x) = sum
         }
     }
     sum[0] = 0;
-    for(int i = 1; i <= maxn; i++) sum[i] = sum[i-1] + miu[i];
-    //for(int i = 1; i <= maxn; i++) sum[i] = sum[i-1] + g[i];
+    for(int i = 1; i < maxn; i++) sum[i] = sum[i-1] + miu[i];
+    //for(int i = 1; i < maxn; i++) sum[i] = sum[i-1] + g[i];
 }
 
 //找[1,a],[1,b],[1,c]内互质的数的对数
@@ -60,4 +60,22 @@ ll solveDouble(int a, int b)
         ans += (ll)(sum[last] - sum[i-1]) * (a/i) * (b/i);
     }
     return ans;
+}
+
+//rec[i][j]: [1,i],[1,j]内互质的数的对数
+//一次性给出rec的大表
+ll now[maxn] = {0};
+ll rec[maxn][maxn];
+void initRec()
+{
+    rec[0][0] = 0;
+    for (int i = 1; i < maxn; i++)
+    {
+        rec[i][0] = 0;
+        for (int j = 1; j <= maxn; j++)
+        {
+            if (__gcd(i, j) == 1) now[j]++;
+            rec[i][j] = rec[i][j-1] + now[j];
+        }
+    }
 }
