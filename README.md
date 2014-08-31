@@ -1,8 +1,9 @@
 # **This is the masterplate for ACM competition.**
 #### All rights reserve by babacry.
 ------------------------------------------------
-### **Content**
-> - Character String
+### **Contents**
+> 
+- Character String
 - Graph Theory
 - Math
     - Number Theory
