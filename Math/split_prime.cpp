@@ -1,31 +1,31 @@
-int primeChart[MAXM];
-bool isPrime[MAXN];
+int prime[MAXM];
+bool is[MAXN];
 int primeCnt;
-int split[MAXM][2];//[0]:prime, [1]cnt
+int split[MAXM][2];//[0]:prime, [1]:cnt
 int splitCnt;
 
-void MakePrimeChart(int cell)//cell(log)cell
+void primeChart(int n)//n(log)n
 {
     primeCnt = 0;
-    memset(isPrime,true,sizeof(isPrime));
-    isPrime[0] = isPrime[1] = false;
+    memset(is,true,sizeof(is));
+    is[0] = is[1] = false;
     for (int i = 2; i < cell; i++)
     {
-        if (!isPrime[i]) continue;
-        primeChart[primeCnt++] = i;
-        for (int j = 2; j <= cell/i; j++) isPrime[i*j] = false;
+        if (!is[i]) continue;
+        prime[primeCnt++] = i;
+        for (int j = i+i; j * i <= n; j += i) is[i*j] = false;
     }
 }
 
-void Split(int x)//O(primeCnt)
+void split(int x)//O(primeCnt)
 {
     int p = 0;
     memset(split,0,sizeof(split));
     splitCnt = 0;
     while(x > 1)
     {
-        if (x%primeChart[p] == 0) split[++splitCnt][0] = primeChart[p];
-        while(x%primeChart[p] == 0) split[splitCnt][1]++,x/=primeChart[p];
+        if (x % prime[p] == 0) split[++splitCnt][0] = prime[p];
+        while(x % prime[p] == 0) split[splitCnt][1]++, x /= prime[p];
         p++;
     }
     if (x > 1) split[++splitCnt][0] = x,split[splitCnt][1]++;
