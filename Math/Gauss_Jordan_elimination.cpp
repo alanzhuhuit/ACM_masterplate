@@ -27,6 +27,7 @@ int dfs(int v, int sizeRow, int sizeCol)
 
 int GaussJordan(int sizeRow, int sizeCol)
 {
+	ptr = 0;
 	for (int row = 0,col = 0; row < sizeRow && col < sizeCol; col++)
 	{
 		int zptr = -1;
