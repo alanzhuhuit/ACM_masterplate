@@ -13,7 +13,7 @@ void primeChart(int n)//n(log)n
     {
         if (!is[i]) continue;
         prime[primeCnt++] = i;
-        for (int j = i+i; j <= n; j += i) is[j] = false;
+        for (int j = i+i; j * i <= n; j += i) is[i*j] = false;
     }
 }
 
