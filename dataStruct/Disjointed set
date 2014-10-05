@@ -11,9 +11,9 @@ int getFather(int x)
 void union_(int x, int y)
 {
     int faX = getFather(x), faY = getFather(y);
-    if (weight[faX] < weight[faY])
-        fa[faX] = faY, weight[faY] += weight[faX];
-    else fa[faY] = faX, weight[faX] += weight[faY];
+    if (Rank[faX] < Rank[faY])
+        fa[faX] = faY; else fa[faY] = faX;
+    if (Rank[faX] == Rank[faY]) Rank[faX]++;
 }
 
-for (int i = 0; i < maxn; i++) fa[i] = i, weight[i] = 1;
+for (int i = 0; i < maxn; i++) fa[i] = i, Rank[i] = 0;
