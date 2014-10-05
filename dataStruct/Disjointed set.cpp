@@ -11,6 +11,7 @@ int getFather(int x)
 void union_(int x, int y)
 {
     int faX = getFather(x), faY = getFather(y);
+    if (faX == faY) return;
     if (Rank[faX] < Rank[faY])
         fa[faX] = faY; else fa[faY] = faX;
     if (Rank[faX] == Rank[faY]) Rank[faX]++;
